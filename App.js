@@ -1,13 +1,16 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import BottomNav from './Components/BottomNavComponent/BottomNav'
+import MainComponent from './Components/MainComponent';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>We are the food tech!!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+        <MainComponent />
+    </NavigationContainer>
+
   );
 }
 
