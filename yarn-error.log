@@ -1,0 +1,55 @@
+Arguments: 
+  C:\Program Files (x86)\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:/Users/MICHEAL01/AppData/Local/Programs/Python/Python38-32/;C:\Program Files\MongoDB\Server\4.2\bin\;C:\Program Files\Git\cmd;C:\Program Files (x86)\nodejs\;C:\php7;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files (x86)\Brackets\command;C:\Program Files (x86)\Jdk15\bin;C:\Users\MICHEAL01\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\MICHEAL01\AppData\Local\Programs\Python\Python38-32\;C:\Users\MICHEAL01\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\MICHEAL01\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2019.2.4\bin;C:\Program Files\heroku\bin;C:\Users\MICHEAL01\AppData\Local\GitHubDesktop\bin;C:\Users\MICHEAL01\AppData\Roaming\npm;C:\Users\MICHEAL01\AppData\Roaming\Composer\vendor\bin;C:\Users\MICHEAL01\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  12.18.2
+
+Platform: 
+  win32 ia32
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:66:26)
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "@react-native-community/masked-view": "0.1.10",
+      "@react-navigation/bottom-tabs": "^5.11.2",
+      "@react-navigation/native": "^5.9.2",
+      "expo": "~40.0.0",
+      "expo-status-bar": "~1.0.3",
+      "react": "16.13.1",
+      "react-dom": "16.13.1",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+      "react-native-gesture-handler": "~1.8.0",
+      "react-native-reanimated": "~1.13.0",
+      "react-native-safe-area-context": "3.1.9",
+      "react-native-screens": "~2.15.2",
+      "react-native-web": "~0.13.12"
+    },
+    "devDependencies": {
+      "@babel/core": "~7.9.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
