@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { Home } from "./src/views/Home";
+import { List } from "./src/views/List";
+import { Recipe } from "./src/views/Recipe";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>We are the food tech!!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const MainNavigator = createStackNavigator({
+  Home: { screen: Home },
+  List: { screen: List },
+  Recipe: { screen: Recipe }
 });
+
+const App = createAppContainer(MainNavigator, {
+  initialRouteName: "Veggiepe",
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: "#f4511e"
+    },
+    headerTintColor: "#fff",
+    headerTitleStyle: {
+      fontWeight: "bold"
+    }
+  }
+});
+
+export default App;
