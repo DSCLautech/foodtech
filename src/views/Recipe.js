@@ -8,7 +8,7 @@ import { Loading } from "../components/loading";
 
 export const Recipe = props => {
   useEffect(() => {
-    setRecipe(props.navigation.getParam("recipe"));
+    setRecipe(props.route.params.recipe);
     setIsLoading(false);
   }, []);
 
@@ -32,8 +32,8 @@ export const Recipe = props => {
       </View>
     </ScrollView>
   ) : (
-    <Loading />
-  );
+      <Loading />
+    );
 };
 
 const styles = StyleSheet.create({
