@@ -7,7 +7,7 @@ import ChatStack from './BottomNavComponent/ChatFolder/ChatStack'
 import DietStack from './BottomNavComponent/DietFolder/DietStack'
 import ShopStack from './BottomNavComponent/ShopFolder/Shopstack'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import HomeComponent from './StackNavs/home';
+import HomeComponent from './stackNavs/home';
 
 
 const Tab = createBottomTabNavigator();
@@ -27,7 +27,11 @@ export default function MainComponents(props) {
                 tabBarIcon: ({ size }) => (
                     <MaterialCommunityIcons name="home" color='white' size={size} />
                 ),
-            }} > {(prop) => <HomeComponent time={props.time} food={props.food} {...prop} />} </Tab.Screen>
+            }} >
+                {/* {(prop) => <HomeComponent time={props.time} food={props.food} {...prop} />}  */}
+                {(prop) => <HomeComponent time={props.time} food={props.food}  {...prop} />}
+
+            </Tab.Screen>
             <Tab.Screen name="Diet" component={DietStack} options={{
                 tabBarLabel: 'DIET',
                 tabBarIcon: ({ color, size }) => (
