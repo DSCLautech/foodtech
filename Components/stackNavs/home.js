@@ -39,15 +39,10 @@ export default function HomeComponent(props) {
             <Stack.Screen
                 name="Recipe"
                 component={Recipe} />
-            {/* <Stack.Screen
-                name="Diet"
-            >
-                {() => <Diet />}
-            </Stack.Screen> */}
 
-            <Stack.Screen name="Diet" >
+            {/* <Stack.Screen name="Diet" >
                 {(prop) => <Diet time={props.time} food={props.food}  {...prop} />}
-            </Stack.Screen>
+            </Stack.Screen> */}
         </Stack.Navigator>
     )
 }

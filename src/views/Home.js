@@ -15,7 +15,7 @@ export const Home = props => {
       <View style={styles.buttonContainer}>
         <CustomButton
           title="Start"
-          onPress={() => props.navigation.navigate("Diet")}
+          onPress={() => props.navigation.navigate("List")}
         />
       </View></View>
   );

@@ -32,7 +32,7 @@ export default function MainComponents(props) {
                 {(prop) => <HomeComponent time={props.time} food={props.food}  {...prop} />}
 
             </Tab.Screen>
-            <Tab.Screen name="Diet" component={DietStack} options={{
+            <Tab.Screen name="Diet" children={(prop) => <DietStack time={props.time} food={props.food}  {...prop} />} options={{
                 tabBarLabel: 'DIET',
                 tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="food-fork-drink" color='white' size={size} />
