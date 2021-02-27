@@ -7,7 +7,7 @@ import { colors } from "../styles/const";
 
 export const Home = props => {
   return (
-   
+
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Title>Food Tech</Title>
@@ -15,7 +15,7 @@ export const Home = props => {
       <View style={styles.buttonContainer}>
         <CustomButton
           title="Start"
-          onPress={() => props.navigation.navigate("List")}
+          onPress={() => props.navigation.navigate("Diet")}
         />
       </View></View>
   );

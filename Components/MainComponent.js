@@ -1,14 +1,7 @@
-import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
-import { View } from 'react-native'
-import BottomNav from './BottomNavComponent/BottomNav'
-import { createStackNavigator } from '@react-navigation/stack';
-import { List } from '../src/views/List';
-import { Home } from '../src/views/Home';
-import { Recipe } from '../src/views/Recipe';
-const Stack = createStackNavigator();
+import HomeComponent from './stackNavs/home';
 
-export default function MainComponent() {
+export default function MainComponent(props) {
     // return (
     //     <View>
     //         <BottomNav />
@@ -16,28 +9,6 @@ export default function MainComponent() {
     // )
 
     return (
-        <Stack.Navigator
-            screenOptions={
-                {
-                    headerStyle: {
-                        backgroundColor: "#f4511e"
-                    },
-                    headerTintColor: "#fff",
-                    headerTitleStyle: {
-                        fontWeight: "bold"
-                    }
-                }
-            }
-        >
-            <Stack.Screen
-                name="Home"
-                component={Home} />
-            <Stack.Screen
-                name="List"
-                component={List} />
-            <Stack.Screen
-                name="Recipe"
-                component={Recipe} />
-        </Stack.Navigator>
+        <HomeComponent time={props.time} food={props.food} />
     )
 }
