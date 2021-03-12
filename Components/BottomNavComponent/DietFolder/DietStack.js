@@ -20,7 +20,7 @@ export default function DietStack(props) {
           }
         }
       }>
-      <Stack.Screen name="Diet" children={(prop) => <Diet time={props.time} food={props.food} user={props.user}  {...prop} />} />
+      <Stack.Screen name="Diet" children={(prop) => <Diet time={props.time} load={props.load} food={props.food} user={props.user}  {...prop} />} />
       {/* <Stack.Screen name="Login" component={Login} /> */}
       {/* <Stack.Screen name="SignUp" component={SignUp} /> */}
 

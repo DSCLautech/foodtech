@@ -58,10 +58,10 @@ export default function MainTab(props) {
                     <MaterialCommunityIcons name="home" color='white' size={size} />
                 ),
             }} >
-                {(prop) => <HomeComponent time={props.time} food={props.food}  {...prop} />}
+                {(prop) => <HomeComponent time={props.time} food={props.food}   {...prop} />}
 
             </Tab.Screen>
-            <Tab.Screen name="Diet" children={(prop) => <DietStack time={props.time} food={props.food} user={props.user}  {...prop} />} options={{
+            <Tab.Screen name="Diet" children={(prop) => <DietStack time={props.time} load={props.load} food={props.food} user={props.user}  {...prop} />} options={{
                 tabBarLabel: 'DIET',
                 tabBarIcon: ({ size }) => (
                     <MaterialCommunityIcons name="food-fork-drink" color='white' size={size} />

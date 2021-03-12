@@ -1,5 +1,10 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Axios from "axios";
 import { firebase } from '../../firebase/config'
+
+
+
+
 export function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
@@ -42,9 +47,11 @@ export const getFood = async (category) => {
 }
 
 export const checkLogin = async () => {
-    let uid;
+    // let uid;
 
     try {
+        let uid = await AsyncStorage.getItem("uid")
+        console.log(uid)
         firebase.auth().onAuthStateChanged(function (userauth) {
             if (userauth.uid) {
                 uid = userauth.uid;

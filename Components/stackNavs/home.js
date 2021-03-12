@@ -8,13 +8,7 @@ import Diet from '../../src/views/Diet';
 const Stack = createStackNavigator();
 
 export default function HomeComponent(props) {
-    // return (
-    //     <View>
-    //         <BottomNav />
-    //     </View>
-    // )
 
-    // console.log(props)
     return (
         <Stack.Navigator
             initialRouteName="Home"

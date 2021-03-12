@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -19,15 +20,15 @@ export default function LoginScreen({ navigation, setUser }) {
 
     const onLoginPress = () => {
         setLoad(true);
-    //    setForm(f => ({...f, email: f.email.trim()}))
-    //    console.log(form)
+        //    setForm(f => ({...f, email: f.email.trim()}))
+        //    console.log(form)
 
         firebase
             .auth()
             .signInWithEmailAndPassword(form.email.trim(), form.password)
             .then((response) => {
-                const uid = response.user.uid
-                console.log(uid, uid)
+                const uid = response.user.uid;
+
                 const usersRef = firebase.firestore().collection('users')
                 usersRef
                     .doc(uid)
@@ -42,7 +43,9 @@ export default function LoginScreen({ navigation, setUser }) {
                         }
                         const user = firestoreDocument.data()
                         // navigation.navigate('Home', { user: user })
-                        setUser({loggedIn: true, user})
+                        AsyncStorage.setItem("uid", uid)
+                            .then((r) => { console.log(r); setUser({ loggedIn: true, user }) })
+                            .catch(e => { alert(error) })
                     })
                     .catch(error => {
                         setLoad(false);

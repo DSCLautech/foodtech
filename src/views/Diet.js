@@ -28,7 +28,7 @@ export default function Diet(props) {
         alert("Hi! We noticed you're accessing this application from a non-nigeria country!.Please Be informed that our database only contain list of nigeria food at the moment")
     }
 
-    if (props.food.load) {
+    if (props.load) {
         return (
             <Loading />
         )

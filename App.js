@@ -45,8 +45,8 @@ const App = () => {
       const time = await getTime();
       const food = await getFood("rice_based");
       setFood(food);
-      setTime(time)
-      setUser(checkUser)
+      setTime(time);
+      setUser(checkUser);
       setLoad(false);
     } catch (error) {
       console.log(error, "An Error Occured", )
@@ -66,7 +66,7 @@ const App = () => {
   // console.log(user)
   return (
     <NavigationContainer>
-      <MainComponent time={time} food={food} user={user} />
+      <MainComponent time={time} food={food} user={user} load={load}/>
     </NavigationContainer>
   )
 }
