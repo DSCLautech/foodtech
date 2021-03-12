@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "873676096582",
+    "project_id": "foodtech-app",
+    "storage_bucket": "foodtech-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873676096582:android:b45d99c895c2c64b793647",
+        "android_client_info": {
+          "package_name": "com.olawalejuwonm.foodtech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873676096582-vgvk5cia8mb6k3hm48o20bdupv7uum0p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.olawalejuwonm.foodtech",
+            "certificate_hash": "cc5748855b5de3c87b734bcfa26a85f86cc966cd"
+          }
+        },
+        {
+          "client_id": "873676096582-0tqcb5sadc5iuu6kl7qqss40dld1um2p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV_ICeBDG3NYMwuBitoAMLyFosRmqs4R0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873676096582-0tqcb5sadc5iuu6kl7qqss40dld1um2p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
