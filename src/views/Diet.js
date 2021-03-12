@@ -26,11 +26,13 @@ export default function Diet(props) {
 
 
     // console.log(food, load)
-    if (!food.details) {
+    if (load) {
         return (
             <Loading />
         )
     }
+
+    
     // useEffect(() => {
     //     setNutrient({});
     //     setNutrient(() => {
@@ -61,11 +63,21 @@ export default function Diet(props) {
     if (food.foodName && props.time && food.details) {
         return (
             <ScrollView >
-                <Text style={{ textAlign: "center" }}>Hi  <Text style={{ fontSize: 20, fontFamily: "sans-serif", textAlign: "center" }}>{props.user ? props.user.user.fullName : "Friend"}</Text> </Text>
+                <Text style={{ textAlign: "center", fontSize: 20 }}>Hi  <Text style={{ fontSize: 20, fontFamily: "sans-serif", textAlign: "center" }}>{props.user ? props.user.user.fullName : "Friend"}</Text> </Text>
                 <Text style={{ fontSize: 30, fontFamily: "sans-serif", textAlign: "center" }}>It's {props.time.preciseTime} time</Text>
                 {/* //TODO: Add like a location icon and center the text */}
-                <Text style={{ fontFamily: "Roboto", flexDirection: "row", justifyContent: "center", textAlign: "center" }}>Based on your nearest location {props.time.city + " " + props.time.country} and preference rice based foods </Text>
-                <Text style={{ textAlign: "center" }}>Will you mind taking {<Text style={{ color: "green", fontWeight: "bold" }}>{food.foodName.toUpperCase()}</Text>} this {props.time.dayTime} ?</Text>
+                <View>
+                    <Text style={{ fontFamily: "Roboto", flexDirection: "row", justifyContent: "center", textAlign: "center" }}>Based on your nearest location
+                <Text style={{ fontSize: 18, color: "green", fontWeight: "bold" }}> {props.time.city + " " + props.time.country}</Text> and preference rice based foods </Text>
+                    <Text style={{ textAlign: "center" }}>Will you mind taking {
+                        <Text style={{ color: "green", fontWeight: "bold" }}>{food.foodName.toUpperCase()}
+                        </Text>} this {props.time.dayTime} ?</Text>
+                </View>
+                <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between" }}>
+                    <Button title="Yes" onPress={() => { Alert.alert("Great!", `Enjoy your ${food.foodName} this ${props.time.preciseTime}`); props.navigation.navigate("Home") }} />
+
+                    <Button title="No" onPress={() => { setLoad(true); setFood(getFood(props.food.foods)); setLoad(false) }} />
+                </View>
 
                 <View style={{ justifyContent: 'center', alignItems: "center", width: '100%', }}>
                     <Image source={{ uri: food.details.img_url }} style={{ padding: 100, width: '100%', margin: 10 }} />
@@ -78,14 +90,11 @@ export default function Diet(props) {
                     flexWrap: "wrap"
                 }}>
                     {Object.keys(food.details.nutritional_information).map(
-                        (k) => <Chart percent={Math.floor(food.details.nutritional_information[k])} label={capitalizeFirstLetter(k)} />
+                        (k, i) => <Chart key={i} percent={Math.floor(food.details.nutritional_information[k])} label={capitalizeFirstLetter(k)} />
                     )}
                 </View>
 
 
-                <Button title="Yes" onPress={() => { Alert.alert("Great!", `Enjoy your ${food.foodName} this ${props.time.preciseTime}`); props.navigation.navigate("Home") }} />
-
-                <Button title="No" onPress={() => { setLoad(true); setFood(getFood(props.food.foods)); setLoad(false) }} />
 
 
 
@@ -96,9 +105,9 @@ export default function Diet(props) {
 
 
 
-    // return (
-    //     <Loading />
-    // )
+    return (
+        <Loading />
+    )
 
 
 }
