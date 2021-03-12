@@ -3,21 +3,28 @@ import { Image, Text, TextInput, TouchableOpacity, View, StyleSheet } from 'reac
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 // import styles from './styles';
 import { firebase } from '../../firebase/config'
+import { Loading } from '../components/loading';
 
 
 
-export default function LoginScreen({ navigation }) {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+export default function LoginScreen({ navigation, setUser }) {
+
+    const [form, setForm] = React.useState({ password: '', email: '' });
+
+    const [load, setLoad] = useState(false)
 
     const onFooterLinkPress = () => {
-        navigation.navigate('Registration')
+        navigation.navigate('Signup')
     }
 
     const onLoginPress = () => {
+        setLoad(true);
+    //    setForm(f => ({...f, email: f.email.trim()}))
+       console.log(form)
+
         firebase
             .auth()
-            .signInWithEmailAndPassword(email, password)
+            .signInWithEmailAndPassword(form.email.trim(), form.password)
             .then((response) => {
                 const uid = response.user.uid
                 const usersRef = firebase.firestore().collection('users')
@@ -25,20 +32,32 @@ export default function LoginScreen({ navigation }) {
                     .doc(uid)
                     .get()
                     .then(firestoreDocument => {
+                        console.log(firestoreDocument)
+                        setLoad(false);
+
                         if (!firestoreDocument.exists) {
-                            alert("User does not exist anymore.")
+                            alert("User does not exist.")
                             return;
                         }
                         const user = firestoreDocument.data()
-                        navigation.navigate('Home', { user: user })
+                        // navigation.navigate('Home', { user: user })
+                        setUser({loggedIn: true, user})
                     })
                     .catch(error => {
+                        setLoad(false);
+
                         alert(error)
                     });
             })
             .catch(error => {
+                setLoad(false);
+
                 alert(error)
             })
+    }
+
+    if (load) {
+        return <Loading />
     }
 
     return (
@@ -56,8 +75,7 @@ export default function LoginScreen({ navigation }) {
                     style={styles.input}
                     placeholder='E-mail'
                     placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setEmail(text)}
-                    value={email}
+                    onChangeText={(e) => setForm(state => ({ ...state, email: e }))}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
@@ -66,8 +84,7 @@ export default function LoginScreen({ navigation }) {
                     placeholderTextColor="#aaaaaa"
                     secureTextEntry
                     placeholder='Password'
-                    onChangeText={(text) => setPassword(text)}
-                    value={password}
+                    onChangeText={(e) => setForm(state => ({ ...state, password: e }))}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />

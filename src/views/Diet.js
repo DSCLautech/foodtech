@@ -21,10 +21,10 @@ export default function Diet(props) {
     //     else if (hrs >= 17 && hrs <= 24)
     //         greet = 'Good Evening';
     // console.log(greet)
-    // console.log(props.food.details.img_url);
+    // console.log(props.food.load);
     // const [details, setDetails] = useState({});
 
-    if (!props.food.details) {
+    if (props.food.load) {
         return (
             <Loading />
         )

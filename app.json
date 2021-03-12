@@ -1,13 +1,7 @@
 {
   "expo": {
-    "name": "FoodTech",
-    "slug": "react-native-tp",
-    "privacy": "public",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "name": "FoodTechApp",
+    "slug": "FoodTechApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -26,7 +20,15 @@
       "supportsTablet": true
     },
     "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
       "package": "com.olawalejuwonm.foodtech"
-    }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "description": ""
   }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { StyleSheet, Text, ScrollView, View } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import { colors } from "../styles/const";
 import { Card } from "../components/card";
 import { Loading } from "../components/loading";

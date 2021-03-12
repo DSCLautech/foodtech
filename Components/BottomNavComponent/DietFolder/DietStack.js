@@ -1,9 +1,5 @@
 import * as React from 'react';
-import { Button, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Login from '../../../src/views/Login'
-import SignUp from '../../../src/views/SignUp'
 import Diet from '../../../src/views/Diet';
 
 

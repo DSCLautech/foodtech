@@ -47,6 +47,7 @@ const App = () => {
       setFood(food);
       setTime(time)
       setLoad(false);
+      // console.log(token, "token")
     } catch (error) {
       alert(error)
     }
