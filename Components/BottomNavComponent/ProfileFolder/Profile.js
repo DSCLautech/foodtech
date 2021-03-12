@@ -7,11 +7,17 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Loading } from "../../../src/components/loading";
+import { Overlay } from "react-native-elements";
 
 
 
 export default function Profile(props) {
-    const [load, setLoad] = useState(false)
+    const [load, setLoad] = useState(false);
+    const [visible, setVisible] = useState(false);
+
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
 
     const signout = async () => {
         setLoad(true)
@@ -25,12 +31,22 @@ export default function Profile(props) {
         setLoad(false)
     }
 
+    const changePref = async () => {
+
+    }
+
 
     if (load) {
         return <Loading />
     }
+
+
     return (
         <ScrollView>
+            <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+        <Text>Hello from Overlay!</Text>
+      </Overlay>
+
             <View style={styles.container}>
                 <View style={{ alignItems: 'center', paddingTop: 20, backgroundColor: '#252b45' }}>
                     <Avatar.Image size={120} source={require('../../../assets/a.jpg')} />
@@ -51,7 +67,7 @@ export default function Profile(props) {
                     </View>
                 </TouchableOpacity>
                 <Divider />
-                <TouchableOpacity>
+                <TouchableOpacity onPress={changePreference}>
                     <View style={styles.text1}>
                         <Text style={{ fontSize: 15, color: 'black' }}>Change preference</Text>
                     </View>

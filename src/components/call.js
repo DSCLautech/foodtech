@@ -55,7 +55,6 @@ export const checkLogin = async () => {
 
     try {
         let uid = await AsyncStorage.getItem("uid")
-        console.log(uid)
         firebase.auth().onAuthStateChanged(function (userauth) {
             if (userauth.uid) {
                 uid = userauth.uid;
@@ -91,3 +90,29 @@ export const checkLogin = async () => {
 export function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+export const changePref = async (pref) => {
+    try {
+        let uid = await AsyncStorage.getItem("uid")
+        firebase.auth().onAuthStateChanged(function (userauth) {
+            if (userauth.uid) {
+                uid = userauth.uid;
+            }
+        });
+
+        const usersRef = firebase.firestore().collection('users')
+        if (uid) {
+            const firestoreDocument = await usersRef.doc(uid).set({
+                pref
+            }, {merge: true})
+            if (!firestoreDocument.exists) {
+                return ({ loggedIn: false })
+            }
+            const user = firestoreDocument.data()
+            return ({ loggedIn: true, user })
+        }
+    }
+    catch (e) {
+        throw e
+    }
+}
