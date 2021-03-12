@@ -96,7 +96,6 @@ export default function Diet(props) {
 
 
 
-
     // return (
     //     <Loading />
     // )
