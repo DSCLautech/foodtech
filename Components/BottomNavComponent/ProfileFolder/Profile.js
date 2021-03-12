@@ -4,12 +4,30 @@ import { render } from "react-dom";
 import { ScrollView, StyleSheet, Text, View, Button } from "react-native";
 import { Image, Avatar, Divider, } from 'react-native-paper'
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Loading } from "../../../src/components/loading";
 
 
 
-export default class Profile extends Component {
-    render() {
+export default function Profile(props) {
+    const [load, setLoad] = useState(false)
 
+    const signout = async () => {
+        setLoad(true)
+        try {
+            await AsyncStorage.removeItem("uid")
+            props.setUser({loggedIn: false})
+        } catch (error) {
+            alert("An error occured");
+            console.log(error)
+        }
+        setLoad(false)
+    }
+
+    if (load) {
+        return <Loading />
+    }
         return (
             <ScrollView>
                 <View style={styles.container}>
@@ -55,7 +73,7 @@ export default class Profile extends Component {
                     <Divider />
                     <TouchableOpacity >
                         <View style={styles.text1}>
-                            <Text style={{ fontSize: 15, color: 'black' }}>Sign out</Text>
+                            <Text style={{ fontSize: 15, color: 'black' }} onPress={signout}>Sign out</Text>
                         </View>
                     </TouchableOpacity>
 
@@ -65,8 +83,6 @@ export default class Profile extends Component {
             </ScrollView>
         )
     }
-}
-
 
 
 

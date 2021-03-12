@@ -50,7 +50,7 @@ const App = () => {
   else if (user.loggedIn == true) {
     return (
       <NavigationContainer>
-        <MainComponent time={time} food={food} user={user} load={load}/>
+        <MainComponent time={time} food={food} user={user} setUser={setUser} load={load}/>
       </NavigationContainer>
     )
   }

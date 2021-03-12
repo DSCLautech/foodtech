@@ -7,10 +7,10 @@ import Profile from './Profile'
 
 const Stack = createStackNavigator();
 
-export default function ProfileStack() {
+export default function ProfileStack(props) {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Profile" children={(prop) => <Profile setUser={props.setUser} {...prop} />} />
 
     </Stack.Navigator>
   );

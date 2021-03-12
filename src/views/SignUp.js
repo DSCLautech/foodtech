@@ -4,11 +4,13 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 // import styles from './styles';
 import { firebase } from '../../firebase/config'
 import { Loading } from '../components/loading';
+import { Picker } from '@react-native-picker/picker';
 
-export default function RegistrationScreen({navigation}) {
+export default function RegistrationScreen({ navigation }) {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [pref, setPref] = useState("rice_based")
     const [confirmPassword, setConfirmPassword] = useState('')
     const [load, setLoad] = useState(false)
 
@@ -24,37 +26,37 @@ export default function RegistrationScreen({navigation}) {
         setLoad(true);
 
         firebase
-        .auth()
-        .createUserWithEmailAndPassword(email.trim(), password)
-        .then((response) => {
-            console.log(response)
-            const uid = response.user.uid
-            const data = {
-                id: uid,
-                email,
-                fullName,
-            };
-            const usersRef = firebase.firestore().collection('users')
-            usersRef
-                .doc(uid)
-                .set(data)
-                .then((r) => {
-                    console.log(r)
-                    navigation.navigate('Login', { user: data })
-                    alert("Account Created Successfully. Login Now!")
-                    setLoad(false);
-                })
-                .catch((error) => {
-                    setLoad(false)
-                    console.log(error, "here error")
+            .auth()
+            .createUserWithEmailAndPassword(email.trim(), password)
+            .then((response) => {
+                console.log(response)
+                const uid = response.user.uid
+                const data = {
+                    id: uid,
+                    email,
+                    fullName,
+                };
+                const usersRef = firebase.firestore().collection('users')
+                usersRef
+                    .doc(uid)
+                    .set(data)
+                    .then((r) => {
+                        console.log(r)
+                        navigation.navigate('Login', { user: data })
+                        alert("Account Created Successfully. Login Now!")
+                        setLoad(false);
+                    })
+                    .catch((error) => {
+                        setLoad(false)
+                        console.log(error, "here error")
 
-                    alert("An error occured")
-                });
-        })
-        .catch((error) => {
-            setLoad(false)
-            alert(error)
-        });
+                        alert("An error occured")
+                    });
+            })
+            .catch((error) => {
+                setLoad(false)
+                alert(error)
+            });
     }
 
     if (load) {
@@ -107,7 +109,23 @@ export default function RegistrationScreen({navigation}) {
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
-                <TouchableOpacity
+                <Picker
+                    selectedValue={pref}
+                    onValueChange={(itemValue, itemIndex) =>
+                        setPref(itemValue)
+                    }>
+                    <Picker.Item label="Rice Related" value="rice_based" />
+                    <Picker.Item label="Bean Related" value="bean_based" />
+                    <Picker.Item label="Cassava Related" value="cassava_based" />
+                    <Picker.Item label="Yam Related" value="yam_based" />
+
+
+                    <Picker.Item label="Much Stew" value="soups_and_stews" />
+                    <Picker.Item label="Common Food" value="snacks" />
+                    <Picker.Item label="Much Beverage" value="beverages" />
+                    <Picker.Item label="Others" value="others" />
+
+                </Picker>                <TouchableOpacity
                     style={styles.button}
                     onPress={() => onRegisterPress()}>
                     <Text style={styles.buttonTitle}>Create account</Text>
