@@ -15,7 +15,7 @@ export default function HomeComponent(props) {
             screenOptions={
                 {
                     headerStyle: {
-                        backgroundColor: "#f4511e"
+                        backgroundColor: "green"
                     },
                     headerTintColor: "#fff",
                     headerTitleStyle: {

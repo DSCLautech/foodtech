@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     width: '100%',
     height: 100,
-    backgroundColor: "rgba(242, 212, 146, 0.8)",
+    backgroundColor: "green",
     justifyContent: "center",
     marginBottom: 4
 
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    color: colors.tertiary,
+    color: 'white',
     textAlign: 'center'
   },
   buttonContainer: {
