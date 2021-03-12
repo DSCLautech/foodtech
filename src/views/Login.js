@@ -20,19 +20,20 @@ export default function LoginScreen({ navigation, setUser }) {
     const onLoginPress = () => {
         setLoad(true);
     //    setForm(f => ({...f, email: f.email.trim()}))
-       console.log(form)
+    //    console.log(form)
 
         firebase
             .auth()
             .signInWithEmailAndPassword(form.email.trim(), form.password)
             .then((response) => {
                 const uid = response.user.uid
+                console.log(uid, uid)
                 const usersRef = firebase.firestore().collection('users')
                 usersRef
                     .doc(uid)
                     .get()
                     .then(firestoreDocument => {
-                        console.log(firestoreDocument)
+                        // console.log(firestoreDocument)
                         setLoad(false);
 
                         if (!firestoreDocument.exists) {

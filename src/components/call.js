@@ -31,7 +31,7 @@ export const getFood = async (category) => {
         let objArr = Object.keys(foodObj);
 
         // console.log(objArr[0])
-        return({
+        return ({
             foodName: objArr[0],
             details: response.data[category][r][objArr[0]],
             load: false
@@ -41,14 +41,38 @@ export const getFood = async (category) => {
     }
 }
 
-export const checkLogin =  () => {
-    return firebase.auth().currentUser? firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-        // Send token to your backend via HTTPS
-        // ...
-        return(idToken)
+export const checkLogin = async () => {
+    let uid;
 
-      }).catch(function(error) {
-        // Handle error
-        throw error
-      }) : null;
+    try {
+        firebase.auth().onAuthStateChanged(function (userauth) {
+            if (userauth.uid) {
+                uid = userauth.uid;
+            }
+        });
+
+        // console.log(uid)
+        const usersRef = firebase.firestore().collection('users')
+        if (uid) {
+            const firestoreDocument = await usersRef.doc(uid).get()
+            if (!firestoreDocument.exists) {
+                return ({ loggedIn: false })
+            }
+            const user = firestoreDocument.data()
+            // navigation.navigate('Home', { user: user })
+            return ({ loggedIn: true, user })
+        }
+       
+       
+    else {
+        // No user is signed in.
+        return ({ loggedIn: false })
+    }
+
+} catch (error) {
+    throw error
+}
+
+
+
 }

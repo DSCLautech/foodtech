@@ -41,15 +41,16 @@ const App = () => {
 
   const ApiCall = async () => {
     try {
-      const token = await checkLogin();
+      const checkUser = await checkLogin();
       const time = await getTime();
       const food = await getFood("rice_based");
       setFood(food);
       setTime(time)
+      setUser(checkUser)
       setLoad(false);
-      // console.log(token, "token")
     } catch (error) {
-      alert(error)
+      console.log(error, "An Error Occured", )
+      alert("An Error Occured")
     }
 
   }
@@ -62,10 +63,10 @@ const App = () => {
     )
   }
 
-  // console.log(food)
+  // console.log(user)
   return (
     <NavigationContainer>
-      <MainComponent time={time} food={food} />
+      <MainComponent time={time} food={food} user={user} />
     </NavigationContainer>
   )
 }
