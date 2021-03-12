@@ -31,6 +31,7 @@ const App = () => {
       setFood(food);
       setTime(time);
       setLoad(false);
+
     } catch (error) {
       console.log(error, "An Error Occured", )
       alert("An Error Occured")

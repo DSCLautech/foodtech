@@ -8,7 +8,7 @@ export const Chart = ({ percent, label }) => (
     <Text style={styles.text}>{label}</Text>
     <ProgressCircle
       percent={percent}
-      radius={50}
+      radius={40}
       borderWidth={8}
       color={colors.orange}
       shadowColor={colors.background}
