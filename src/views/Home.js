@@ -9,9 +9,19 @@ export const Home = props => {
   return (
 
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Title>Food Tech</Title>
-      </View>
+      <View style={{ flexDirection: "row" ,justifyContent:'space-around',marginHorizontal:20}}>
+<View><Text>List Of Diet</Text></View>
+<View><Text>List Of Shops</Text></View>
+</View>
+<View style={{ flexDirection: "row" ,justifyContent:'space-around',marginHorizontal:20}}>
+
+<View><Text>Chat With Expert</Text></View>
+<View><Text>List Of Diet  </Text></View>
+
+</View>
+
+        
+      
       <View style={styles.buttonContainer}>
         <CustomButton
           title="Start"

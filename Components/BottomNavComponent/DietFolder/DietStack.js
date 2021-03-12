@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Diet from '../../../src/views/Diet';
+import { colors } from '../../../src/styles/const';
 
 
 
