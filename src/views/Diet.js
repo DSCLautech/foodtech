@@ -25,7 +25,7 @@ export default function Diet(props) {
     // const [details, setDetails] = useState({});
 
     if (props.time.country != "Nigeria") {
-        alert("Hi! We noticed you're accessing this application from a non-nigeria counttry. Be informed that our database only contain nigeria food at the moment")
+        alert("Hi! We noticed you're accessing this application from a non-nigeria country!.Please Be informed that our database only contain list of nigeria food at the moment")
     }
 
     if (props.food.load) {

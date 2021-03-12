@@ -53,7 +53,7 @@ export default function MainTab(props) {
                 activeBackgroundColor: '#24ff00',
                 inactiveBackgroundColor: 'green'
             }}>
-            {/* <Tab.Screen name="Home" options={{
+            <Tab.Screen name="Home" options={{
                 tabBarLabel: 'HOME',
                 tabBarIcon: ({ size }) => (
                     <MaterialCommunityIcons name="home" color='white' size={size} />
@@ -61,7 +61,7 @@ export default function MainTab(props) {
             }} >
                 {(prop) => <HomeComponent time={props.time} food={props.food}  {...prop} />}
 
-            </Tab.Screen> */}
+            </Tab.Screen>
             <Tab.Screen name="Diet" children={(prop) => <DietStack time={props.time} food={props.food} user={props.user}  {...prop} />} options={{
                 tabBarLabel: 'DIET',
                 tabBarIcon: ({ size }) => (
