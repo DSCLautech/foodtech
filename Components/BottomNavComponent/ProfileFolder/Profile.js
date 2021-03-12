@@ -67,7 +67,7 @@ export default function Profile(props) {
                     </View>
                 </TouchableOpacity>
                 <Divider />
-                <TouchableOpacity onPress={setVisible(true)}>
+                <TouchableOpacity onPress={() => setVisible(true)}>
                     <View style={styles.text1}>
                         <Text style={{ fontSize: 15, color: 'black' }}>Change preference</Text>
                     </View>
