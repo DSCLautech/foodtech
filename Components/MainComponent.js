@@ -7,8 +7,7 @@ import ShopStack from './BottomNavComponent/ShopFolder/Shopstack'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import RegistrationScreen from '../src/views/SignUp'
 import LoginScreen from '../src/views/Login';
-
-
+import  HomeComponent  from '../Components/stackNavs/home'
 
 const Stack = createStackNavigator();
 
