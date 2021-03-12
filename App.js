@@ -2,28 +2,11 @@ import React, { useEffect, useState } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 
 import MainComponent, { LoginStack } from "./Components/MainComponent";
-import { checkLogin, getFood, getTime } from "./src/components/call";
+import { checkLogin, getFoods, getTime } from "./src/components/call";
+import { Loading } from "./src/components/loading";
 
 
-// const App = createAppContainer(MainNavigator, {
-//   initialRouteName: "Veggiepe",
-//   defaultNavigationOptions: {
-//     headerStyle: {
-//       backgroundColor: "#f4511e"
-//     },
-//     headerTintColor: "#fff",
-//     headerTitleStyle: {
-//       fontWeight: "bold"
-//     }
-//   }
-// });
-// Axios.get('https://timezoneapi.io/api/ip/?token=akefGSZHPzSUlQMnKmGB/')
-//   .then((r) => {
-//     console.log(r.data.data.datetime.timeday_gen, r.data.data.city, r.data.data.country);
-//   })
-//   .catch((e) => {
-//     console.log(e)
-//   })
+
 
 const App = () => {
   const [time, setTime] = useState({});
@@ -42,11 +25,11 @@ const App = () => {
   const ApiCall = async () => {
     try {
       const checkUser = await checkLogin();
+      setUser(checkUser);
       const time = await getTime();
-      const food = await getFood("rice_based");
+      const food = await getFoods("rice_based");
       setFood(food);
       setTime(time);
-      setUser(checkUser);
       setLoad(false);
     } catch (error) {
       console.log(error, "An Error Occured", )
@@ -55,7 +38,7 @@ const App = () => {
 
   }
 
-  if (!user.loggedIn) {
+  if (user.loggedIn == false) {
     return (
       <NavigationContainer>
         <LoginStack state={setUser} />
@@ -63,12 +46,20 @@ const App = () => {
     )
   }
 
-  // console.log(user)
+  else if (user.loggedIn == true) {
+    return (
+      <NavigationContainer>
+        <MainComponent time={time} food={food} user={user} load={load}/>
+      </NavigationContainer>
+    )
+  }
+
   return (
-    <NavigationContainer>
-      <MainComponent time={time} food={food} user={user} load={load}/>
-    </NavigationContainer>
+    <Loading />
   )
+
+  // console.log(user)
+ 
 }
 
 

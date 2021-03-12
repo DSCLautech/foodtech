@@ -3,49 +3,60 @@ import axios from "axios";
 import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 import { Title } from "../styles/title";
 import { Loading } from "../components/loading";
+import { getFood } from "../components/call";
+import { useEffect } from "react";
+import { Button } from "react-native";
+import { Alert } from "react-native";
 
 export default function Diet(props) {
-    // var date = new Date(1614388361);
-    // // Hours part from the timestamp
-    // var hrs = date.getHours();
-    // // Minutes part from the timestamp
-    // var minutes = "0" + date.getMinutes();
-    // // Seconds part from the timestamp
-    // var seconds = "0" + date.getSeconds();
-    //  var greet;
+    const [food, setFood] = useState({})
+    const [load, setLoad] = useState(props.load)
 
-    //     if (hrs < 12)
-    //         greet = 'Good Morning';
-    //     else if (hrs >= 12 && hrs <= 17)
-    //         greet = 'Good Afternoon';
-    //     else if (hrs >= 17 && hrs <= 24)
-    //         greet = 'Good Evening';
-    // console.log(greet)
-    // console.log(props.user.user.fullName);
-    // const [details, setDetails] = useState({});
+    useEffect(() => {
+        if (props.food.foods) {
+            setFood(getFood(props.food.foods));
+        }
+
+    }, [props.food.foods]);
+
+
+
+
+    if (load) {
+        return (
+            <Loading />
+        )
+    }
 
     if (props.time.country != "Nigeria") {
         alert("Hi! We noticed you're accessing this application from a non-nigeria country!.Please Be informed that our database only contain list of nigeria food at the moment")
     }
 
-    if (props.load) {
+    if (food.foodName && props.time) {
         return (
-            <Loading />
+            <View >
+                <Text style={{ textAlign: "center" }}>Hi  <Text style={{ fontSize: 20, fontFamily: "sans-serif", textAlign: "center" }}>{props.user ? props.user.user.fullName : "Friend"}</Text> </Text>
+                <Text style={{ fontSize: 30, fontFamily: "sans-serif", textAlign: "center" }}>It's {props.time.preciseTime}</Text>
+                {/* //TODO: Add like a location icon and center the text */}
+                <Text style={{ fontFamily: "Roboto", flexDirection: "row", justifyContent: "center", textAlign: "center" }}> {props.time.city + " " + props.time.country} </Text>
+                <Text style={{ textAlign: "center" }}>Will you mind taking {<Text style={{ color: "green", fontWeight: "bold" }}>{food.foodName.toUpperCase()}</Text>} this {props.time.dayTime} ?</Text>
+    
+                <View style={{ justifyContent: 'center', alignItems: "center", width: '100%', }}>
+                    <Image source={{ uri: food.details.img_url }} style={{ padding: 100, width: '100%', margin: 10 }} />
+                </View>
+                <Button title="Yes" onPress={() => {Alert.alert("Great!", `Enjoy your ${food.foodName} this ${props.time.preciseTime}`); props.navigation.navigate("Home")}}/>
+
+                <Button title="No" onPress={() =>{setLoad(true); setFood(getFood(props.food.foods)); setLoad(false)}}/>
+    
+    
+    
+            </View>
         )
     }
+
     return (
-        <View >
-            <Text style={{ textAlign: "center" }}>Hi  <Text style={{ fontSize: 20, fontFamily: "sans-serif",textAlign: "center"}}>{props.user ? props.user.user.fullName : "Friend"}</Text> </Text>
-            <Text style={{ fontSize: 30, fontFamily: "sans-serif", textAlign: "center" }}>It's {props.time.preciseTime}</Text>
-            {/* //TODO: Add like a location icon and center the text */}
-            <Text style={{ fontFamily: "Roboto", flexDirection: "row", justifyContent: "center", textAlign: "center" }}> {props.time.city + " " + props.time.country} </Text>
-            <Text style={{ textAlign: "center" }}>Will you mind taking {<Text style={{ color: "green", fontWeight: "bold" }}>{props.food.foodName.toUpperCase()}</Text>} this {props.time.dayTime} ?</Text>
-
-            <View style={{ justifyContent: 'center', alignItems: "center", width: '100%', }}>
-                <Image source={{ uri: props.food.details.img_url }} style={{ padding: 100, width: '100%', margin: 10 }} />
-            </View>
-
-
-        </View>
+        <Loading />
     )
+
+    
 }

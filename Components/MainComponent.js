@@ -28,14 +28,6 @@ export function LoginStack(props) {
       }>
       <Stack.Screen name="Signup" children={(prop) => <RegistrationScreen setUser={props.setUser} {...prop} />} />
       <Stack.Screen name="Login" children={(prop) => <LoginScreen setUser={props.state} {...prop} />} />
-      {/* <Stack.Screen name="Main">
-      {(prop) => <Main time={props.time} food={props.food}  {...prop} />}
-
-      </Stack.Screen> */}
-      {/* <Stack.Screen name="Login" component={Login} /> */}
-      {/* <Stack.Screen name="SignUp" component={SignUp} /> */}
-
-
     </Stack.Navigator>
 
   );

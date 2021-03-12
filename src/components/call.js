@@ -24,28 +24,32 @@ export const getTime = async () => {
 
 }
 
-export const getFood = async (category) => {
-    try {
-        let response = await Axios.get(`https://nigerianfoods.herokuapp.com/api/food_category/${category}`);
+export const getFood =  (foods) => {
+        // let response = await Axios.get(`https://nigerianfoods.herokuapp.com/api/food_category/${category}`);
 
-        let l = response.data[category].length
+        let l = foods.length
 
         let r = randomNumber(0, l);
 
-        let foodObj = response.data[category][r];
+        let foodObj = foods[r];
         let objArr = Object.keys(foodObj);
 
-        // console.log(objArr[0])
         return ({
             foodName: objArr[0],
-            details: response.data[category][r][objArr[0]],
-            load: false
+            details: foods[r][objArr[0]],
+        })
+}
+
+export const getFoods = async (category) => {
+    try {
+        let response = await Axios.get(`https://nigerianfoods.herokuapp.com/api/food_category/${category}`);
+        return ({
+            foods: response.data[category]
         })
     } catch (error) {
         throw error
     }
 }
-
 export const checkLogin = async () => {
     // let uid;
 
