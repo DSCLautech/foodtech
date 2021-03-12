@@ -9,7 +9,7 @@ export default function Shop() {
 
                 <TouchableOpacity>
                     <Image
-                        source={require('../../../assets/a.jfif')}
+                        source={require('../../../assets/a.jpg')}
                         style={{ width: 380, height: 170, }}
                     />
                     <Text style={{ fontSize: 17, textAlign: 'center' }}> Lagos Kitchen</Text>
@@ -17,29 +17,29 @@ export default function Shop() {
 
                 <TouchableOpacity>
                     <Image
-                        source={require('../../../assets/b.jfif')}
+                        source={require('../../../assets/b.jpg')}
                         style={{ width: 380, height: 170, marginTop: 20 }}
                     />
-                    <Text style={{ fontSize: 17, textAlign: 'center' }}> derek Food</Text>
+                    <Text style={{ fontSize: 17, textAlign: 'center' }}> Derek Food</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity>
                     <Image
-                        source={require('../../../assets/c.jfif')}
+                        source={require('../../../assets/c.jpg')}
                         style={{ width: 380, height: 170, marginTop: 20 }}
                     />
                     <Text style={{ fontSize: 17, textAlign: 'center' }}> Amazing Food</Text>
                 </TouchableOpacity>
 
                 <Image
-                    source={require('../../../assets/d.jfif')}
+                    source={require('../../../assets/d.jpg')}
                     style={{ width: 380, height: 170, marginTop: 20 }}
                 />
                 <Text style={{ fontSize: 17, textAlign: 'center' }}> Alice Food</Text>
 
                 <TouchableOpacity>
                     <Image
-                        source={require('../../../assets/a.jfif')}
+                        source={require('../../../assets/a.jpg')}
                         style={{ width: 380, height: 170, }}
                     />
                     <Text style={{ fontSize: 17, textAlign: 'center' }}> Oasis Food</Text>

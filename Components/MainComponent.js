@@ -18,11 +18,12 @@ export function LoginStack(props) {
       screenOptions={
         {
           headerStyle: {
-            backgroundColor: "#f4511e"
+            backgroundColor: "green"
           },
           headerTintColor: "#fff",
           headerTitleStyle: {
-            fontWeight: "bold"
+            fontWeight: "bold",
+            textAlign:'center'
           }
         }
       }>
