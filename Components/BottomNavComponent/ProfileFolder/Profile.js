@@ -17,7 +17,7 @@ export default function Profile(props) {
         setLoad(true)
         try {
             await AsyncStorage.removeItem("uid")
-            props.setUser({loggedIn: false})
+            props.setUser({ loggedIn: false })
         } catch (error) {
             alert("An error occured");
             console.log(error)
@@ -25,64 +25,51 @@ export default function Profile(props) {
         setLoad(false)
     }
 
+
     if (load) {
         return <Loading />
     }
-        return (
-            <ScrollView>
-                <View style={styles.container}>
-                    <View style={{ alignItems: 'center', paddingTop: 20, backgroundColor: '#252b45' }}>
-                        <Avatar.Image size={120} source={require('../../../assets/a.jpg')} />
-
-
-                        <Text style={{ fontSize: 20, color: 'white', paddingTop: 20, paddingBottom: 10 }}></Text>
-                    </View>
-
-                    <TouchableOpacity>
-                        <View style={styles.text1}>
-                            <Text style={{ fontSize: 15, color: 'black' }}>Profile</Text>
-                        </View>
-                    </TouchableOpacity>
-
-                
-
-                  
-
-
-                    <TouchableOpacity>
-                        <View style={styles.text1}>
-                            <Text style={{ fontSize: 15, color: 'black' }}>Account Details</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <Divider />
-
-               
-
-                    <TouchableOpacity>
-                        <View style={styles.text1}>
-                            <Text style={{ fontSize: 15, color: 'black' }}>Feed Back</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <Divider />
-                    <TouchableOpacity>
-                        <View style={styles.text1}>
-                            <Text style={{ fontSize: 15, color: 'black' }}>Settings</Text>
-                        </View>
-                    </TouchableOpacity>
-                 
-                    <Divider />
-                    <TouchableOpacity >
-                        <View style={styles.text1}>
-                            <Text style={{ fontSize: 15, color: 'black' }} onPress={signout}>Sign out</Text>
-                        </View>
-                    </TouchableOpacity>
-
-
-
+    return (
+        <ScrollView>
+            <View style={styles.container}>
+                <View style={{ alignItems: 'center', paddingTop: 20, backgroundColor: '#252b45' }}>
+                    <Avatar.Image size={120} source={require('../../../assets/a.jpg')} />
+                    <Text style={{ fontSize: 20, color: 'white', paddingTop: 20, paddingBottom: 10 }}>{props.user ? props.user.user.fullName : "Friend"}</Text>
                 </View>
-            </ScrollView>
-        )
-    }
+                <TouchableOpacity>
+                    <View style={styles.text1}>
+                        <Text style={{ fontSize: 15, color: 'black' }}>Account Details</Text>
+                    </View>
+                </TouchableOpacity>
+                <Divider />
+
+
+
+                <TouchableOpacity onPress={() => alert("Please email yor feedback to olawalejuwon@gmail.com")}>
+                    <View style={styles.text1}>
+                        <Text style={{ fontSize: 15, color: 'black' }}>Feed Back</Text>
+                    </View>
+                </TouchableOpacity>
+                <Divider />
+                <TouchableOpacity>
+                    <View style={styles.text1}>
+                        <Text style={{ fontSize: 15, color: 'black' }}>Change preference</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <Divider />
+                <TouchableOpacity >
+                    <View style={styles.text1}>
+                        <Text style={{ fontSize: 15, color: 'black' }} onPress={signout}>Sign out</Text>
+                    </View>
+                </TouchableOpacity>
+
+
+
+            </View>
+        </ScrollView>
+    )
+}
 
 
 
