@@ -35,14 +35,22 @@ export default function Diet(props) {
     }
     return (
         <View >
-            <Text style={{ textAlign: "center" }}>Hi  <Text style={{ fontSize: 20, fontFamily: "sans-serif",textAlign: "center"}}>{props.user ? props.user.user.fullName : "Friend"}</Text> </Text>
-            <Text style={{ fontSize: 30, fontFamily: "sans-serif", textAlign: "center" }}>It's {props.time.preciseTime}</Text>
+            <Text style={{ textAlign: "center" }}>
+            <Text style={{ fontSize: 20, fontFamily: "sans-serif", textAlign: "center" }}>
+                It's {props.time.preciseTime}</Text>
+
+            <Text style={{ fontSize: 20, fontFamily: "sans-serif", textAlign: "center" }}>{props.user ? props.user.user.fullName : "Friend"}</Text> </Text>
+
             {/* //TODO: Add like a location icon and center the text */}
-            <Text style={{ fontFamily: "Roboto", flexDirection: "row", justifyContent: "center", textAlign: "center" }}> {props.time.city + " " + props.time.country} </Text>
-            <Text style={{ textAlign: "center" }}>Will you mind taking {<Text style={{ color: "green", fontWeight: "bold" }}>{props.food.foodName.toUpperCase()}</Text>} this {props.time.dayTime} ?</Text>
+            <Text style={{ fontFamily: "Roboto", flexDirection: "row", justifyContent: "center", textAlign: "center" }}>
+                {props.time.city + " " + props.time.country} </Text>
+            <Text style={{ textAlign: "center" }}>Base On Your  
+             {<Text style={{ color: "green", fontWeight: "bold",fontSize:17,padding:50 }}>
+                    {props.food.foodName.toUpperCase()}</Text>} this {props.time.dayTime}</Text>
 
             <View style={{ justifyContent: 'center', alignItems: "center", width: '100%', }}>
-                <Image source={{ uri: props.food.details.img_url }} style={{ padding: 100, width: '100%', margin: 10 }} />
+                <Image source={{ uri: props.food.details.img_url }}
+                    style={{ padding: 100, width: '100%', margin: 10 }} />
             </View>
 
 
