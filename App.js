@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 
-
-import MainComponent from "./Components/MainComponent";
-import Axios from "axios";
+import MainComponent, { LoginStack } from "./Components/MainComponent";
+import { checkLogin, getFood, getTime } from "./src/components/call";
 
 
 // const App = createAppContainer(MainNavigator, {
@@ -28,46 +27,38 @@ import Axios from "axios";
 
 const App = () => {
   const [time, setTime] = useState({});
-  const [food, setFood] = useState({})
+  const [food, setFood] = useState({});
+  const [load, setLoad] = useState(true);
+  const [user, setUser] = useState({});
+
 
   useEffect(() => {
-    getTime();
-    getFood("rice_based");
-    // return () => {
+    ApiCall()
+        // return () => {
 
     // };
-  }, [getTime, getFood])
+  }, [ApiCall])
 
-  function randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+  const ApiCall = async () => {
+    try {
+      const token = await checkLogin();
+      const time = await getTime();
+      const food = await getFood("rice_based");
+      setFood(food);
+      setTime(time)
+      setLoad(false);
+    } catch (error) {
+      alert(error)
+    }
+
   }
 
-  const getTime = async () => {
-    let response = await Axios.get('https://timezoneapi.io/api/ip/?token=akefGSZHPzSUlQMnKmGB/')
-
-    setTime({
-      dayTime: response.data.data.datetime.timeday_gen, city: response.data.data.city,
-      country: response.data.data.country, preciseTime: response.data.data.datetime.timeday_spe
-    })
-
-  }
-
-  const getFood = async (category) => {
-    let response = await Axios.get(`https://nigerianfoods.herokuapp.com/api/food_category/${category}`);
-
-    let l = response.data[category].length
-
-    let r = randomNumber(0, l);
-
-    let foodObj = response.data[category][r];
-    let objArr = Object.keys(foodObj);
-
-    // console.log(objArr[0])
-    setFood({
-      foodName: objArr[0],
-      details: response.data[category][r][objArr[0]]
-    })
-
+  if (!user.loggedIn) {
+    return (
+      <NavigationContainer>
+        <LoginStack state={setUser} />
+      </NavigationContainer>
+    )
   }
 
   // console.log(food)
