@@ -10,8 +10,6 @@ import { ScrollView } from "react-native";
 
 export default function Diet(props) {
     const [food, setFood] = useState({});
-    const [load, setLoad] = useState(props.load);
-    const [nutrient, setNutrient] = useState({});
 
 
     // console.log(props.food.foods)
@@ -25,8 +23,8 @@ export default function Diet(props) {
     }, [props.food.foods]);
 
 
-    // console.log(food, load)
-    if (load) {
+    // console.log( props.load, "me in diet")
+    if (props.load) {
         return (
             <Loading />
         )
@@ -76,7 +74,7 @@ export default function Diet(props) {
                 <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between" }}>
                     <Button title="Yes" onPress={() => { Alert.alert("Great!", `Enjoy your ${food.foodName} this ${props.time.preciseTime}`); props.navigation.navigate("Home") }} />
 
-                    <Button title="No" onPress={() => { setLoad(true); setFood(getFood(props.food.foods)); setLoad(false) }} />
+                    <Button title="No" onPress={() => { setFood(getFood(props.food.foods)); }} />
                 </View>
 
                 <View style={{ justifyContent: 'center', alignItems: "center", width: '100%', }}>

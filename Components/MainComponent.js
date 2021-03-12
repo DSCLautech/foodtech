@@ -76,7 +76,7 @@ export default function MainTab(props) {
           <MaterialCommunityIcons name="chat-processing" color='white' size={size} />
         ),
       }} />
-      <Tab.Screen name="Profile" children={(prop) => <ProfileStack setUser={props.setUser} {...prop} />} options={{
+      <Tab.Screen name="Profile" children={(prop) => <ProfileStack setUser={props.setUser} user={props.user} {...prop} />} options={{
         tabBarLabel: 'Profile',
         tabBarIcon: ({ size }) => (
           <MaterialCommunityIcons name="account" color='white' size={size} />

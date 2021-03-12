@@ -35,6 +35,7 @@ export default function RegistrationScreen({ navigation }) {
                     id: uid,
                     email,
                     fullName,
+                    pref
                 };
                 const usersRef = firebase.firestore().collection('users')
                 usersRef
@@ -109,8 +110,10 @@ export default function RegistrationScreen({ navigation }) {
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
+                <Text style={styles.title}>Select Food Preference:</Text>
                 <Picker
                     selectedValue={pref}
+                    style={styles.input}
                     onValueChange={(itemValue, itemIndex) =>
                         setPref(itemValue)
                     }>
@@ -118,14 +121,13 @@ export default function RegistrationScreen({ navigation }) {
                     <Picker.Item label="Bean Related" value="bean_based" />
                     <Picker.Item label="Cassava Related" value="cassava_based" />
                     <Picker.Item label="Yam Related" value="yam_based" />
-
-
                     <Picker.Item label="Much Stew" value="soups_and_stews" />
                     <Picker.Item label="Common Food" value="snacks" />
                     <Picker.Item label="Much Beverage" value="beverages" />
                     <Picker.Item label="Others" value="others" />
 
-                </Picker>                <TouchableOpacity
+                </Picker>
+                <TouchableOpacity
                     style={styles.button}
                     onPress={() => onRegisterPress()}>
                     <Text style={styles.buttonTitle}>Create account</Text>
@@ -144,7 +146,11 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-
+        marginTop: 10,
+        marginBottom: 10,
+        marginLeft: 30,
+        marginRight: 30,
+        paddingLeft: 16
     },
     logo: {
         flex: 1,

@@ -26,7 +26,6 @@
       },
       "package": "com.olawalejuwonm.foodtech",
       "googleServicesFile": "./google-services.json"
-
     },
     "web": {
       "favicon": "./assets/favicon.png"

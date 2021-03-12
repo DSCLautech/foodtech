@@ -4,7 +4,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import MainComponent, { LoginStack } from "./Components/MainComponent";
 import { checkLogin, getFoods, getTime } from "./src/components/call";
 import { Loading } from "./src/components/loading";
+import { LogBox } from "react-native";
 
+LogBox.ignoreLogs(['Setting a timer']);
 
 
 
@@ -17,9 +19,6 @@ const App = () => {
 
   useEffect(() => {
     ApiCall()
-        // return () => {
-
-    // };
   }, [ApiCall])
 
   const ApiCall = async () => {
@@ -27,11 +26,13 @@ const App = () => {
       const checkUser = await checkLogin();
       setUser(checkUser);
       const time = await getTime();
-      const food = await getFoods("rice_based");
+      const food = await getFoods(checkUser.user.pref);
+      // console.log(food, checkUser)
+
       setFood(food);
       setTime(time);
       setLoad(false);
-
+      console.log(load, "me in app")
     } catch (error) {
       console.log(error, "An Error Occured", )
       alert("An Error Occured")

@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 export default function ProfileStack(props) {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Profile" children={(prop) => <Profile setUser={props.setUser} {...prop} />} />
+      <Stack.Screen name="Profile" children={(prop) => <Profile  user={props.user} setUser={props.setUser} {...prop} />} />
 
     </Stack.Navigator>
   );
