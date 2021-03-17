@@ -8,12 +8,14 @@ import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Loading } from "../../../src/components/loading";
 import { Overlay } from "react-native-elements";
+import { Picker } from '@react-native-picker/picker';
 
 
 
 export default function Profile(props) {
     const [load, setLoad] = useState(false);
     const [visible, setVisible] = useState(false);
+    const [pref, setPref] = useState("rice_based")
 
     const toggleOverlay = () => {
         setVisible(!visible);
@@ -44,8 +46,22 @@ export default function Profile(props) {
     return (
         <ScrollView>
             <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
-        <Text>Hello from Overlay!</Text>
-      </Overlay>
+            <Picker
+                    selectedValue={pref}
+                    style={styles.input}
+                    onValueChange={(itemValue, itemIndex) =>
+                        setPref(itemValue)
+                    }>
+                    <Picker.Item label="Rice Related" value="rice_based" />
+                    <Picker.Item label="Bean Related" value="bean_based" />
+                    <Picker.Item label="Cassava Related" value="cassava_based" />
+                    <Picker.Item label="Yam Related" value="yam_based" />
+                    <Picker.Item label="Much Stew" value="soups_and_stews" />
+                    <Picker.Item label="Common Food" value="snacks" />
+                    <Picker.Item label="Much Beverage" value="beverages" />
+                    <Picker.Item label="Others" value="others" />
+
+                </Picker>      </Overlay>
 
             <View style={styles.container}>
                 <View style={{ alignItems: 'center', paddingTop: 20, backgroundColor: '#252b45' }}>
