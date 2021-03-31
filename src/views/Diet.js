@@ -66,14 +66,14 @@ export default function Diet(props) {
                 {/* //TODO: Add like a location icon and center the text */}
                 <View>
                     <Text style={{ fontFamily: "Roboto", flexDirection: "row", justifyContent: "center", textAlign: "center" }}>Based on your nearest location
-                <Text style={{ fontSize: 18, color: "green", fontWeight: "bold" }}> {props.time.city + " " + props.time.country}</Text> and preference rice based foods </Text>
+                <Text style={{ fontSize: 18, color: "green", fontWeight: "bold" }}> {props.time.city + " " + props.time.country}</Text> and preference <Text style={{ fontSize: 18, color: "grey", fontWeight: "bold" }}> {props.user ? props.user.user.pref : "rice based"}</Text> </Text>
                     <Text style={{ textAlign: "center" }}>Will you mind taking {
                         <Text style={{ color: "green", fontWeight: "bold" }}>{food.foodName.toUpperCase()}
                         </Text>} this {props.time.dayTime} ?</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: "center", justifyContent: "space-between" }}>
                     <Button title="Yes" onPress={() => { Alert.alert("Great!", `Enjoy your ${food.foodName} this ${props.time.preciseTime}`); props.navigation.navigate("Home") }} />
-
+                    <Text>(Change Preference In Profile)</Text>
                     <Button title="No" onPress={() => { setFood(getFood(props.food.foods)); }} />
                 </View>
 

@@ -8,7 +8,7 @@ export const Card = ({ imgUrl, title, style, onPress, tags }) => (
   <TouchableOpacity style={(style, styles.container)} onPress={onPress}>
     <Image
       style={{ width: "100%", height: "70%" }}
-      // source={imgUrl ? { uri: imgUrl } : require("../../assets/background.jpg")}
+      source={imgUrl ? { uri: imgUrl } : {uri : "https://techsightings.com/wp-content/uploads/2019/09/Food-Tech.png"}}
     ></Image>
     <View style={{ paddingLeft: 10, paddingTop: 5, paddingBottom: 5 }}>
       <Subtitle>{title}</Subtitle>

@@ -1,9 +1,5 @@
 import React from "react";
-import axios from "axios";
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
-import { Title } from "../styles/title";
-import { CustomButton } from "../components/button";
-import { colors } from "../styles/const";
+import { StyleSheet, Text, View } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 export const Home = props => {
@@ -11,19 +7,19 @@ export const Home = props => {
 
     <ScrollView >
       <View style={styles.container}>
-        <Text style={{ textAlign: "center", fontSize: 17, padding: 20 }}> Welcome to DIET APP , Find the below  Diet Recommendation From  Our Expert </Text>
+        <Text style={{ textAlign: "center", fontSize: 17, padding: 20 }}> Welcome to Food Tech Diet App</Text>
         <View style={{ flexDirection: 'column', justifyContent: 'space-between', }}>
 
           <TouchableOpacity
             onPress={() => props.navigation.navigate("Diet")}>
             <View style={styles.titleContainer}>
-              <Text style={styles.text}>Recommended Diet</Text>
+              <Text style={styles.text}>Diet Recommendation</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => props.navigation.navigate("Shop")}>
             <View style={styles.titleContainer}>
-              <Text style={styles.text}>List Of Shop</Text>
+              <Text style={styles.text}>Restaurant List</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -32,25 +28,21 @@ export const Home = props => {
           <TouchableOpacity
             onPress={() => props.navigation.navigate("Chat")}>
             <View style={styles.titleContainer}>
-              <Text style={styles.text}>Chat With Expert</Text>
+              <Text style={styles.text}>Chat With Dietician</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => props.navigation.navigate("List")}>
             <View style={styles.titleContainer}>
-              <Text style={styles.text}>List Of Diet</Text>
+              <Text style={styles.text}>Diet List</Text>
             </View>
           </TouchableOpacity>
 
         </View>
-
-
-
-
         <TouchableOpacity
           onPress={() => props.navigation.navigate("List")}>
           <View style={styles.buttonContainer}>
-            <Text style={{ textAlign: "center", fontSize: 20, color: 'green' }}>Start</Text>
+            <Text style={{ textAlign: "center", fontSize: 20, color: 'green' }}>Browse</Text>
           </View>
         </TouchableOpacity>
       </View>

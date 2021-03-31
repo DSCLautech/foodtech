@@ -28,6 +28,7 @@ export const List = props => {
       });
   };
 
+  // console.log(recipes[0].recipe.image)
   return !isLoading ? (
     <View style={styles.container}>
       <ScrollView>
@@ -76,6 +77,7 @@ export const List = props => {
               key={index}
               title={recipe.recipe.label}
               imgUrl={recipe.recipe.image}
+              // imgUrl={'https://techsightings.com/wp-content/uploads/2019/09/Food-Tech.png'}
               tags={recipe.recipe.digest}
             />
           ))}
