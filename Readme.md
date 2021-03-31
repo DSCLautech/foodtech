@@ -38,11 +38,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### TODO
 
-Forgot password
-Reset Password
-Crowdsource The Application
-Chat With Dietician
-Connect With Restaurants
-Get more food based on locality not limited to a specific region
+- Forgot password
+- Reset Password
+- Crowdsource The Application
+- Chat With Dietician
+- Connect With Restaurants
+- Get more food based on locality not limited to a specific region
 
 
